@@ -15,7 +15,7 @@ k256 = "0.13"
 base58 = "0.2"
 sha2 = "0.10"
 hmac = "0.12"
-memzero = "0.1"
+zeroize = "1.8"
 
 [dev-dependencies]
 ethsign = { version = "0.9", default-features = false, features = ["pure-rust"] }

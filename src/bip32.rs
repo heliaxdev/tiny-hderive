@@ -1,17 +1,17 @@
 use base58::FromBase58;
 use hmac::{Hmac, Mac};
 use k256::SecretKey;
-use memzero::Memzero;
 use sha2::Sha512;
 use std::fmt;
 use std::ops::Deref;
 use std::str::FromStr;
+use zeroize::ZeroizeOnDrop;
 
 use crate::bip44::{ChildNumber, IntoDerivationPath};
 use crate::Error;
 
-#[derive(Clone, PartialEq, Eq)]
-pub struct Protected(Memzero<[u8; 32]>);
+#[derive(Clone, PartialEq, Eq, ZeroizeOnDrop)]
+pub struct Protected([u8; 32]);
 
 impl<Data: AsRef<[u8]>> From<Data> for Protected {
     fn from(data: Data) -> Protected {
@@ -19,7 +19,7 @@ impl<Data: AsRef<[u8]>> From<Data> for Protected {
 
         buf.copy_from_slice(data.as_ref());
 
-        Protected(Memzero::from(buf))
+        Protected(buf)
     }
 }
 
