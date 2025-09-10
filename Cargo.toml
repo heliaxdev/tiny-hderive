@@ -1,9 +1,9 @@
 [package]
 name = "nam-tiny-hderive"
-version = "0.3.1-nam.0"
+version = "0.3.1-nam.1"
 authors = ["Parity Technologies <admin@parity.io>"]
 edition = "2018"
-license = "GPL-3.0"
+license = "GPL-3.0-or-later"
 description = "(Namada fork) Tiny BIP44/BIP32 derivation for BIP39 seeds"
 documentation = "https://docs.rs/tiny-hderive"
 homepage = "https://github.com/maciejhirsz/tiny-hderive"
@@ -15,7 +15,7 @@ k256 = "0.13"
 base58 = "0.2"
 sha2 = "0.10"
 hmac = "0.12"
-memzero = "0.1"
+zeroize = "1.8"
 
 [dev-dependencies]
 ethsign = { version = "0.9", default-features = false, features = ["pure-rust"] }
